@@ -1,8 +1,6 @@
-const API_KEY = '445801fcbc41b874f17c376c20d2b7d';
-const TMDB_BASE = 'https://api.themoviedb.org/3';
 const TMDB_POSTER = 'https://image.tmdb.org/t/p/w500';
 const TMDB_BACKDROP = 'https://image.tmdb.org/t/p/original';
-const TMDB_BEARER = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0NDU4MDFmY2JjNDFiODc0NGYxN2MzNzZjMjBkMmI3ZCIsIm5iZiI6MTc4MDc5NDg4Ny4wODQsInN1YiI6IjZhMjRjNjA3MzZkNjdjMTZiMGIyNDFhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qikWm3-iVDgxUeisFN0poVDsTXQMIX8YoCKj8rdMpU4';
+const API_PROXY = '/api';
 
 const genreMap = {
   28: 'Action',
@@ -159,11 +157,10 @@ function saveWatchlist() {
 }
 
 function fetchWithTMDB(path, params = {}) {
-  const url = new URL(`${TMDB_BASE}${path}`);
-  url.search = new URLSearchParams({ api_key: API_KEY, language: 'en-US', ...params }).toString();
+  const url = new URL(`${API_PROXY}${path}`, window.location.origin);
+  url.search = new URLSearchParams({ language: 'en-US', ...params }).toString();
   return fetch(url.toString(), {
     headers: {
-      Authorization: TMDB_BEARER,
       'Content-Type': 'application/json;charset=utf-8'
     }
   }).then((response) => {

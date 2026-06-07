@@ -1,0 +1,13 @@
+{
+  "name": "movie-site",
+  "version": "1.0.0",
+  "description": "CineStream movie streaming website with a secure TMDB proxy server.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "express": "^4.18.4"
+  }
+}
