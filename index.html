@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineStream | Watch the Best Movies</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen">
+    <div class="spinner"></div>
+    <p>Loading CineStream</p>
+  </div>
+
+  <div class="auth-screen" id="authScreen">
+    <div class="auth-panel glass-card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg" alt="CineStream Logo" class="auth-logo" />
+      <h1>Welcome back</h1>
+      <p>Sign in to explore curated movies, trailers and watchlists.</p>
+      <form id="authForm">
+        <label>
+          Email
+          <input type="email" placeholder="you@example.com" required />
+        </label>
+        <label>
+          Password
+          <input type="password" placeholder="Enter password" required />
+        </label>
+        <button type="submit" class="btn primary">Sign In</button>
+      </form>
+      <button id="guestButton" class="btn secondary">Continue as Guest</button>
+    </div>
+  </div>
+
+  <div class="page-shell" id="pageShell">
+    <header class="topbar glass-card">
+      <div class="brand-row">
+        <a href="#home" class="brand">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg" alt="CineStream" />
+          <span>CineStream</span>
+        </a>
+        <nav class="main-nav">
+          <a href="#home">Home</a>
+          <a href="#movies">Movies</a>
+          <a href="#tvshows">TV Shows</a>
+          <a href="#trending">Trending</a>
+          <a href="#watchlist">My List</a>
+        </nav>
+      </div>
+      <div class="nav-actions">
+        <button class="icon-btn" id="searchToggle" aria-label="Open search">
+          <span class="icon">🔎</span>
+        </button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <span class="icon">🌙</span>
+        </button>
+        <div class="profile-bubble" title="Signed in user">
+          <span>JS</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="search-bar hidden" id="searchBar">
+      <input type="search" id="searchInput" placeholder="Search movies, genres, actors..." aria-label="Search movies" />
+      <span class="search-hint">Type to filter results across categories</span>
+    </div>
+
+    <main>
+      <section class="hero" id="home">
+        <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?auto=format&fit=crop&w=1400&q=80">
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <span class="eyebrow">Featured</span>
+          <h1>The Neon Frontier</h1>
+          <p>Explore an edge-of-your-seat sci-fi thriller where secrets collide, and every choice rewrites the future.</p>
+          <div class="hero-actions">
+            <button class="btn primary" id="heroPlayBtn">Play</button>
+            <button class="btn secondary" id="moreInfoBtn">More Info</button>
+          </div>
+          <div class="hero-meta glass-card">
+            <span>4K</span>
+            <span>Exclusive</span>
+            <span>8.7 Rating</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="rows search-results hidden" id="searchResultsSection">
+        <div class="category-header">
+          <h2>Search Results</h2>
+        </div>
+        <div class="movie-row" data-category="Search Results"></div>
+      </section>
+
+      <section class="rows" id="movieRows">
+        <div class="category-header" id="trending">
+          <h2>Trending Now</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Trending Now"></div>
+
+        <div class="category-header">
+          <h2>Top Rated</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Top Rated"></div>
+
+        <div class="category-header" id="movies">
+          <h2>Action Movies</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Action Movies"></div>
+
+        <div class="category-header">
+          <h2>Comedy</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Comedy"></div>
+
+        <div class="category-header" id="tvshows">
+          <h2>Horror</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Horror"></div>
+
+        <div class="category-header">
+          <h2>Sci-Fi</h2>
+          <div class="scroll-controls">
+            <button class="scroll-btn" data-direction="left">‹</button>
+            <button class="scroll-btn" data-direction="right">›</button>
+          </div>
+        </div>
+        <div class="movie-row" data-category="Sci-Fi"></div>
+      </section>
+
+      <section class="rows watchlist-section" id="watchlist">
+        <div class="category-header">
+          <h2>My Watchlist</h2>
+          <button class="btn secondary" id="clearWatchlist">Clear Watchlist</button>
+        </div>
+        <div class="watchlist-grid" id="watchlistGrid"></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal" id="movieModal" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card glass-card">
+      <button class="modal-close" id="modalClose">×</button>
+      <div class="modal-body">
+        <div class="modal-poster" id="modalPoster"></div>
+        <div class="modal-details">
+          <span class="modal-badge" id="modalCategory"></span>
+          <h2 id="modalTitle"></h2>
+          <p id="modalDescription"></p>
+          <div class="modal-stats">
+            <span id="modalRating"></span>
+            <span id="modalYear"></span>
+            <span id="modalDuration"></span>
+          </div>
+          <div class="modal-actions">
+            <button class="btn primary" id="playTrailerBtn">Play Trailer</button>
+            <button class="btn secondary" id="watchlistToggle">Add to Watchlist</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
